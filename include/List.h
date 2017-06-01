@@ -2,7 +2,7 @@
 #define _LIST_H_
 
 #include "Object.h"
-namespace DTLib
+namespace ELib
 {
 template<typename T>
 class List : public Object

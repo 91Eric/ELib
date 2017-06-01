@@ -1,6 +1,6 @@
 #include "./include/Object.h"
 #include <cstdlib>
-namespace DTLib {
+namespace ELib {
 
 Object::Object()
 {

@@ -1,7 +1,7 @@
 #ifndef _EXCEPTION_H
 #define _EXCEPTION_H
 
-namespace DTLib
+namespace ELib
 {
 
 #define THROW_EXCEPTION(e,m) (throw e(m,__FILE__,__LINE__))

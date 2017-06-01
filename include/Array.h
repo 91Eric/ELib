@@ -3,7 +3,7 @@
 #include "Object.h"
 #include "Exception.h"
 
-namespace DTLib
+namespace ELib
 {
 
 //Defination of Array template

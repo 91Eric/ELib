@@ -4,7 +4,7 @@
 #include "Array.h"
 #include <iostream>
 
-namespace DTLib
+namespace ELib
 {
 
 template<typename T,int N>

@@ -1,7 +1,7 @@
 #ifndef MYLINKLIST_H
 #define MYLINKLIST_H
 /*
-* @brief : 单链表模板实现，自己的另一种思路，会有问题，
+* @brief : 单链表模板实现，自己的另一种思路，会有问题，这个问题主要是关于异常安全的，平时可不考虑
 * @author: Eric
 * @data  : 20170531
 * @other:
@@ -11,7 +11,7 @@
 #include "Exception.h"
 
 
-namespace DTLib {
+namespace ELib {
 
 template<typename T>
 class LinkList : public List<T>

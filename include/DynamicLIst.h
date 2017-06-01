@@ -7,7 +7,7 @@
 /*
 这里的动态是指可以动态的更改大小，不是指链表形式的动态添加，因为我们默认还是固定长度
 */
-namespace DTLib
+namespace ELib
 {
 
 template<typename T>

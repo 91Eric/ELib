@@ -1,7 +1,7 @@
 #ifndef _SMARTPOINTER_H
 #define _SMARTPOINTER_H
 
-namespace DTLib
+namespace ELib
 {
 template<typename T>
 class SmartPointer

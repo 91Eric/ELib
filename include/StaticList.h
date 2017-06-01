@@ -3,7 +3,7 @@
 
 #include "Seqlist.h"
 
-namespace DTLib
+namespace ELib
 {
 
 template<typename T,int N>

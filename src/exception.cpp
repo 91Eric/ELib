@@ -3,7 +3,7 @@
 #include <cstdlib>
 using namespace std;
 
-namespace DTLib
+namespace ELib
 {
 
 void Exception::init(const char *message, const char *file, int line)

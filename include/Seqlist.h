@@ -12,7 +12,7 @@
 #include <new>
 using namespace std;
 
-namespace DTLib
+namespace ELib
 {
 
 template<typename T>

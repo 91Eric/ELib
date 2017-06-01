@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstring>
 #include ".//include//Object.h"
-#include ".//include/MyLinkList.h"
+#include ".//include/LinkList.h"
 
 using namespace std;
-using namespace DTLib;
+using namespace ELib;
 class Test
 {
 

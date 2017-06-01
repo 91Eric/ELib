@@ -11,7 +11,7 @@
 #include "Object.h"
 #include "Exception.h"
 
-namespace DTLib {
+namespace ELib {
 
 template<typename T>
 class LinkList : public List<T>
