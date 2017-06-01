@@ -1,0 +1,22 @@
+TEMPLATE = app
+CONFIG += console c++11
+CONFIG -= app_bundle
+CONFIG -= qt
+
+SOURCES += main.cpp \
+    src/Object.cpp \
+    src/Exception.cpp
+
+HEADERS += \
+    include/Object.h \
+    include/SmartPointer.h \
+    include/Exception.h \
+    include/List.h \
+    include/Seqlist.h \
+    include/StaticList.h \
+    include/Array.h \
+    include/StaticArray.h \
+    include/DynamicList.h \
+    include/DynamicArray.h \
+    include/LinkList.h \
+    include/MyLinkList.h
