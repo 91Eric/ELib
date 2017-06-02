@@ -19,4 +19,5 @@ HEADERS += \
     include/DynamicList.h \
     include/DynamicArray.h \
     include/LinkList.h \
-    include/MyLinkList.h
+    include/MyLinkList.h \
+    include/DynamicArray.h
