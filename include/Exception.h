@@ -45,17 +45,17 @@ public:
     }
 };
 
-class IndexOutOfBoundsExceptio:public Exception  //越界
+class IndexOutOfBoundsException:public Exception  //越界
 {
 public:
-    IndexOutOfBoundsExceptio():Exception(0) {}
-    IndexOutOfBoundsExceptio(const char* message):Exception(message){}
-    IndexOutOfBoundsExceptio(const char* file,int line):Exception(file,line){}
-    IndexOutOfBoundsExceptio(const char* message,const char* file,int line):Exception(message,file,line){}
+    IndexOutOfBoundsException():Exception(0) {}
+    IndexOutOfBoundsException(const char* message):Exception(message){}
+    IndexOutOfBoundsException(const char* file,int line):Exception(file,line){}
+    IndexOutOfBoundsException(const char* message,const char* file,int line):Exception(message,file,line){}
 
-    IndexOutOfBoundsExceptio(const IndexOutOfBoundsExceptio& e):Exception(e){}
+    IndexOutOfBoundsException(const IndexOutOfBoundsException& e):Exception(e){}
 
-    IndexOutOfBoundsExceptio& operator =(const IndexOutOfBoundsExceptio& e)
+    IndexOutOfBoundsException& operator =(const IndexOutOfBoundsException& e)
     {
         Exception::operator =(e);
         return *this;

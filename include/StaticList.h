@@ -10,7 +10,7 @@ template<typename T,int N>
 class StaticList:public SeqList<T>
 {
 protected:
-    T m_space[N];
+    T m_space[N];   //使用原生数组
 public:
     StaticList()
     {

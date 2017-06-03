@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include ".//include//Object.h"
-#include ".//include/LinkList.h"
+#include ".//include/Exception.h"
 
 using namespace std;
 using namespace ELib;
@@ -21,13 +21,6 @@ public:
 int main()
 {
 
-    LinkList<Test> s1;
-    Test t1(3);
-    s1.insert(t1);
-    Test t2;
-    s1.get(0,t2);
-    cout<<t2.a<<endl;
-    s1.clear();
 
 //    for(int i=0;i<5;i++)
 //    {
