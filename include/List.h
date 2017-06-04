@@ -17,6 +17,7 @@ public:
     virtual bool remove(int i) = 0;
     virtual bool set(int i,const T& e) = 0;
     virtual bool get(int i,T& e) const = 0;
+    virtual int find(const T& e) const = 0;  //由于相等运算符的使用，如果使用自定义类型那么久的定义自己的==重载函数，我觉得可以
     virtual int length() const = 0;  //这里的const
     virtual void clear() = 0;
 };

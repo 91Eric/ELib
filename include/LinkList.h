@@ -41,6 +41,8 @@ public:
     bool get(int i,T& e) const;
     T get(int i) const;
     int length() const;  //这里的const
+    int find(const T&e) const;
+    //T operator ==(const T& e);
 /*
 * @Function Description : 获取到位置 i 的节点指针
 * @Input parameters :
@@ -115,7 +117,7 @@ bool LinkList<T> :: remove(int i)
     }
     else
     {
-        THROW_EXCEPTION(IndexOutOfBoundsExceptio,"Index is out of boundary to remove LinkList Object");
+        THROW_EXCEPTION(IndexOutOfBoundsException,"Index is out of boundary to remove LinkList Object");
     }
 
 
@@ -134,7 +136,7 @@ bool LinkList<T> :: set(int i,const T& e)
     }
     else
     {
-        THROW_EXCEPTION(IndexOutOfBoundsExceptio,"Index is out of boundary to set LinkList Object");
+        THROW_EXCEPTION(IndexOutOfBoundsException,"Index is out of boundary to set LinkList Object");
     }
 
     return ret;
@@ -152,7 +154,7 @@ bool LinkList<T> :: get(int i,T& e) const
     }
     else
     {
-        THROW_EXCEPTION(IndexOutOfBoundsExceptio,"Index is out of boundary to get LinkList Object");
+        THROW_EXCEPTION(IndexOutOfBoundsException,"Index is out of boundary to get LinkList Object");
     }
 
     return ret;
@@ -168,7 +170,7 @@ T LinkList<T> :: get(int i) const
     }
     else   //这个其实没用，因为 get(int i,T& e) const已经处理了越界问题，为了规范
     {
-        THROW_EXCEPTION(IndexOutOfBoundsExceptio,"Index is out of boundary to get LinkList Object");
+        THROW_EXCEPTION(IndexOutOfBoundsException,"Index is out of boundary to get LinkList Object");
     }
 
     return ret;  //这一句 其实没用，为了规范
@@ -204,6 +206,29 @@ void LinkList<T> :: clear()
         delete toClear;
     }
     m_length = 0;
+}
+
+template<typename T>
+int LinkList<T> :: find(const T&e) const
+{
+    int ret = -1;
+    int pos = 0;
+    Node* current = m_header.next;
+    while(current)
+    {
+        if(current->value == e)
+        {
+            ret = pos;
+            break;
+        }
+        else
+        {
+            current = current->next;
+            pos++;
+        }
+    }
+
+    return ret;
 }
 
 template<typename T>

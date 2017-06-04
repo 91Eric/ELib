@@ -11,6 +11,8 @@ public:
     void operator delete(void* p);
     void* operator new[](unsigned int size) throw();
     void operator delete[](void* p);
+    bool operator ==(const Object& obj);  //这里实现的是地址相等与否的比较，即是否是同一个对象
+    bool operator !=(const Object& obj);
     virtual ~Object() = 0;
 };
 

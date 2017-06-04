@@ -27,6 +27,7 @@ public:
     int length() const ;  //这里的const
     void clear();
     virtual int capacity() = 0; //因为这是线性表序存储的基类，不产生实际对象，因此不需要容量操作
+    int find(const T& e) const;
     T& operator[](int i);
     T operator[](int i) const;//对比两个函数，为什么常量函数返回对象而不是引用
 private:
@@ -114,6 +115,24 @@ T& SeqList<t>::operator[](int i)
         THROW_EXECPTION(IndexOutOfBoundsExceptio,"Index is out of boundary!");
     }
 }
+
+template<typename T>
+int SeqList<t> :: find(const T& e) const
+{
+    int ret = -1;
+
+    for(int i=0;i<m_length;i++)
+    {
+        if(m_array[i] == e)
+        {
+            ret = i;
+            break;
+        }
+    }
+
+    return ret;
+}
+
 template<typename T>
 T SeqList<t>::operator[](int i) const  //为什么返回对象 而不是引用，因为返回引用的话 就会出现 可以通过 const_cast将其强转为非const从而对常量对象进行修改
 {
