@@ -129,7 +129,6 @@ int SeqList<t> :: find(const T& e) const
             break;
         }
     }
-
     return ret;
 }
 
