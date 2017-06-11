@@ -2,7 +2,7 @@
 #include <cstring>
 #include ".//include//Object.h"
 #include ".//include/LinkList.h"
-
+#include "./include/Exception.h"
 using namespace std;
 using namespace ELib;
 class Test
@@ -24,11 +24,11 @@ public:
 
 int main()
 {
-    LinkList<Test> list;
+    LinkList<int> list;
     for(int i=0;i<5;i++)
-        list.insert(Test(i));
-    Test t(3);
-    cout<<list.find(t)<<endl;
+        list.insert((i));
+    for(list.move(0,2);!list.end();list.next())
+        cout<<list.current()<<endl;
 
 
 

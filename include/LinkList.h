@@ -30,6 +30,8 @@ protected:
         char reserved[sizeof(T)]; //占位符，代替T value
         Node* next;
     }m_header;
+    Node* m_current;
+    int m_step;
     int m_length;
 
 public:
@@ -42,6 +44,11 @@ public:
     T get(int i) const;
     int length() const;  //这里的const
     int find(const T&e) const;
+    bool move(int i,int step = 1);
+    bool end();
+    bool next();
+    T current();
+
     //T operator ==(const T& e);
 /*
 * @Function Description : 获取到位置 i 的节点指针
@@ -58,6 +65,7 @@ public:
         }
         return ret;  //这里由于局部指针指向的是堆上的内存，因此返回这个指针没问题，有问题的是指向栈上的指针
     }
+
     void clear();
     ~LinkList();
 };
@@ -67,6 +75,8 @@ LinkList<T> :: LinkList()
 {
     this->m_header.next = NULL;
     this->m_length = 0;
+    this->m_step = 0;
+    this->m_current = NULL;
 }
 
 template<typename T>
@@ -231,6 +241,50 @@ int LinkList<T> :: find(const T&e) const
     return ret;
 }
 
+template<typename T>
+bool LinkList<T> :: move(int i,int step)
+{
+    bool ret  = (i >= 0)&&(i < m_length)&&(step > 0);
+    if(ret)
+    {
+        m_current = position(i)->next;   //position获取到的是节点i的前一个节点
+        m_step = step;
+    }
+
+    return ret;
+}
+
+template<typename T>
+bool LinkList<T> :: end()
+{
+    return (m_current == NULL);
+}
+
+template<typename T>
+bool LinkList<T> :: next()
+{
+    int i = 0;
+    while(i < m_step && !end())
+    {
+        m_current = m_current->next;
+        i++;
+    }
+
+    return (i == m_step);
+}
+
+template<typename T>
+T LinkList<T> ::  current()
+{
+    if(!end())
+    {
+        return m_current->value;
+    }
+    else
+    {
+        THROW_EXCEPTION(InvalidParameterException,"No  value at current position...");
+    }
+}
 template<typename T>
 LinkList<T> :: ~LinkList()
 {
