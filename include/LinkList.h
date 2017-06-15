@@ -49,6 +49,16 @@ public:
     bool next();
     T current();
 
+    virtual Node* create()
+    {
+        return new Node();
+    }
+    virtual void destory(Node *p)
+    {
+        delete p;
+        p = NULL;
+    }
+
     //T operator ==(const T& e);
 /*
 * @Function Description : 获取到位置 i 的节点指针
@@ -69,6 +79,7 @@ public:
     void clear();
     ~LinkList();
 };
+typename LinkList<T>::Node Node;
 
 template<typename T>
 LinkList<T> :: LinkList()
@@ -85,7 +96,7 @@ bool LinkList<T> :: insert(int i,const T& e)
     bool ret = ((i>=0)&&(i<=m_length));
     if(ret)
     {
-        Node* node = new Node();
+        Node* node =create();
         if(node != NULL)
         {
             Node*  current =position(i);
@@ -121,7 +132,7 @@ bool LinkList<T> :: remove(int i)
 
         Node* toDel = current->next;
         current->next = toDel->next;
-        delete toDel;
+        destory(toDel);
 
         this->m_length--;
     }
@@ -213,7 +224,7 @@ void LinkList<T> :: clear()
         Node* toClear =m_header.next;
         m_header.next= toClear->next;
 
-        delete toClear;
+        DESTORY(toClear);
     }
     m_length = 0;
 }
