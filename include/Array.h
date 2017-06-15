@@ -59,22 +59,20 @@ bool Array<T> :: set(int i,const T& e)
 template<typename T>
 T& Array<T> :: operator[](int i)
 {
-    cout<<"...."<<endl;
-      if((i>=0)&&(i<length()))
-      {
-          return  m_array[i];
-      }
-      else
-      {
-           THROW_EXCEPTION(IndexOutOfBoundsException,"Index is out of boundary!");
-      }
+      return (const_cast<Array<T>&>(*this))[i]; //代码复用
 }
 
 template<typename T>
 T Array<T> :: operator [](int i) const
 {
-    cout<<"!!!"<<endl;
-    return (const_cast<Array<T>&>(*this))[i]; //代码复用
+    if((i>=0)&&(i<length()))
+    {
+        return  m_array[i];
+    }
+    else
+    {
+         THROW_EXCEPTION(IndexOutOfBoundsException,"Index is out of boundary!");
+    }
 }
 
 
