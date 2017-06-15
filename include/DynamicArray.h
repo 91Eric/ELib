@@ -96,7 +96,7 @@ DynamicArray<T>&  DynamicArray<T> :: operator= (const DynamicArray<T>& e)
 }
 
 template<typename T>
-void DynamicArray<T> :: resize(int length)
+void DynamicArray<T> :: resize(int length)  //这里使用了copy and swap思想，见Effective c++ P131.应该考虑到这样做的空间和时间复杂度
 {
     if(this->m_length != length)
     {
