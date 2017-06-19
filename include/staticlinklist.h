@@ -10,21 +10,18 @@ template<typename T,int N>
 class StaticLinkList : public LinkList<T>
 {
 protected:
-    typedef typename LinkList<T>::Node Node;
+    typedef typename LinkList<T>::Node Node;   //这里就是解决找不到Node
 
-    struct SNode : public Node
+    struct SNode : public Node  //继承而不是直接使用Node的原因是 ，我们需要重载new
     {
-      void* operator new(size_t size,void* loc)
+      void* operator new(size_t size,void* loc)   //针对具体的类类型。使用placement new 必须重载new操作符！
       {
           return loc;
       }
-//       void operator delete(void* p)
-//       {
-//           delete p;
-//       }
+
     };
 
-    unsigned char m_space[sizeof(SNode)*N];  //这里就是解决找不到Node
+    unsigned char m_space[sizeof(SNode)*N];
     bool m_used[N];
 
 public:
@@ -45,7 +42,7 @@ public:
             if(!m_used[i])
             {
                 ret = reinterpret_cast<SNode*>(m_space) + i;  // 这只是分配空间，没有调用构造函数
-                ret = new(ret)SNode(); //这里NEW的用法！！
+                ret = new(ret)SNode(); //这里NEW的用法！！。标准new用法，只不过平常很少用
                 m_used[i] = true;
                 break;
             }
