@@ -2,6 +2,7 @@
 #define _LIST_H_
 
 #include "Object.h"
+
 namespace ELib
 {
 template<typename T>
