@@ -25,7 +25,7 @@ protected:
    // mutable Node m_header;    //重点！！ 由于get函数会改变对象的 指针域，而函数又是 const 因此加上这个  ，但是顺序表不需要没因为他们是直接获取
     //原始的用法存在问题，加入一个类的构造函数有异常抛出，那么 就会 导致构造 m_header 时导致value 触发构造函数，但是这时候程序员并没有构造任何关于类的
     //对象，荣然抛出异常，因此不合理。个人解决方案，把m_header 换成指针，别人的思路:匿名类
-    mutable struct : public Object
+    mutable struct SNode: public Object
     {
         char reserved[sizeof(T)]; //占位符，代替T value
         Node* next;
@@ -79,7 +79,7 @@ public:
     void clear();
     ~LinkList();
 };
-typename LinkList<T>::Node Node;
+
 
 template<typename T>
 LinkList<T> :: LinkList()
@@ -132,9 +132,8 @@ bool LinkList<T> :: remove(int i)
 
         Node* toDel = current->next;
         current->next = toDel->next;
+        this->m_length--; //为了防止对象在析构时抛出异常导致长度不变，因此需要将长度更改放在前面
         destory(toDel);
-
-        this->m_length--;
     }
     else
     {
@@ -223,10 +222,9 @@ void LinkList<T> :: clear()
     {
         Node* toClear =m_header.next;
         m_header.next= toClear->next;
-
-        DESTORY(toClear);
+        m_length--;  //出于异常安全，同remove()函数
+        destory(toClear);
     }
-    m_length = 0;
 }
 
 template<typename T>
@@ -296,6 +294,7 @@ T LinkList<T> ::  current()
         THROW_EXCEPTION(InvalidParameterException,"No  value at current position...");
     }
 }
+
 template<typename T>
 LinkList<T> :: ~LinkList()
 {

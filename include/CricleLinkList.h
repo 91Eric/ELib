@@ -1,0 +1,4 @@
+#ifndef CRICLELINKLIST_H
+#define CRICLELINKLIST_H
+
+#endif // CRICLELINKLIST_H
