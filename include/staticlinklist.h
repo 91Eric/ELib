@@ -16,6 +16,7 @@ protected:
     {
       void* operator new(size_t size,void* loc)   //针对具体的类类型。使用placement new 必须重载new操作符！
       {
+          size = size;
           return loc;
       }
 
