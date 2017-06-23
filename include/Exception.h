@@ -110,8 +110,6 @@ public:
         Exception::operator =(e);
         return *this;
     }
-
-
 };
 
 }
