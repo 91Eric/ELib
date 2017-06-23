@@ -131,6 +131,10 @@ bool LinkList<T> :: remove(int i)
         Node* current =  position(i);
 
         Node* toDel = current->next;
+        if(m_current == toDel)   //这里是为了防止使用新的迭代方式中存在删除操作导致m_current失效，类似迭代器失效
+        {
+            m_current = toDel->next;
+        }
         current->next = toDel->next;
         this->m_length--; //为了防止对象在析构时抛出异常导致长度不变，因此需要将长度更改放在前面
         destory(toDel);
