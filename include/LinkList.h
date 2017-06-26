@@ -208,30 +208,6 @@ int LinkList<T> :: length() const
 }
 
 template<typename T>
-void LinkList<T> :: clear()
-{
-    /* 我的初始思路
-   Node* current = &m_header;
-   while(current !=NULL)
-   {
-       Node* toClear = current->next;
-       m_header.next= toClear->next;
-
-       delete toClear;
-   }
-   m_length = 0;
-   */
-    //改进思路
-    while(m_header.next != NULL)
-    {
-        Node* toClear =m_header.next;
-        m_header.next= toClear->next;
-        m_length--;  //出于异常安全，同remove()函数
-        destory(toClear);
-    }
-}
-
-template<typename T>
 int LinkList<T> :: find(const T&e) const
 {
     int ret = -1;
@@ -296,6 +272,30 @@ T LinkList<T> ::  current()
     else
     {
         THROW_EXCEPTION(InvalidParameterException,"No  value at current position...");
+    }
+}
+
+template<typename T>
+void LinkList<T> :: clear()
+{
+    /* 我的初始思路
+   Node* current = &m_header;
+   while(current !=NULL)
+   {
+       Node* toClear = current->next;
+       m_header.next= toClear->next;
+
+       delete toClear;
+   }
+   m_length = 0;
+   */
+    //改进思路
+    while(m_header.next != NULL)
+    {
+        Node* toClear =m_header.next;
+        m_header.next= toClear->next;
+        m_length--;  //出于异常安全，同remove()函数
+        destory(toClear);
     }
 }
 
