@@ -41,13 +41,13 @@ public:
     bool remove(int i);
     bool set(int i,const T& e);
     bool get(int i,T& e) const;
-    T get(int i) const;
+    virtual T get(int i) const;
     int length() const;  //这里的const
     int find(const T&e) const;
-    bool move(int i,int step = 1);
-    bool end();
-    bool next();
-    T current();
+    virtual bool move(int i,int step = 1);
+    virtual bool end();
+    virtual bool next();
+    virtual T current();
 
     virtual Node* create()
     {
