@@ -1,8 +1,9 @@
 #include <iostream>
 #include <cstring>
 #include ".//include//Object.h"
-#include ".//include/LinkList.h"
-#include "./include/StaticArray.h"
+#include ".//include//LinkList.h"
+#include "./include//staticlinklist.h"
+#include ".//include//SmartPointer.h"
 using namespace std;
 using namespace ELib;
 class Test
@@ -24,8 +25,8 @@ public:
 
 int main()
 {
-    const StaticArray<int,5> arr;
-    const_cast<StaticArray<int,5>&>(arr).set(1,22);
-    cout<<"...."<<arr[1]<<endl;
+
+
+    StaticLinkList<int,6> a;
     return 0;
 }
