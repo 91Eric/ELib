@@ -28,7 +28,7 @@ StaticArray<T,N> :: StaticArray()
 template<typename T,int N>
 StaticArray<T,N> :: StaticArray(const StaticArray<T,N>& e)    //此处使用委托构造StaticArray()也可以
 {
-    this->m_array = this->m_space;
+    this->m_array = this->m_space;  //这一步只是将m_array进行空间的指定，是初始化部分。和拷贝本身无关！！！！
     /*
      !!!!!!!这里存在一个误区 StaticArray<T,5> StaticArray<T,6>是不同的类型，因此不能拷贝或赋值，因此不需要判断最小长度!!!!!!!
     int length = (this->length() < e.length() ? this->length() : e.length());

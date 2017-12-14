@@ -53,13 +53,15 @@ void DynamicList<T> :: resize(int capacity)
             int length = (this->m_length < capacity ? this->m_length : capacity);
             for(i = 0;i<length;i++)
             {
-                array[i] = this->m_array[i];   //假如这里出现异常，也不会影响原先的结构，因为是在新的内存上处理的，但是会造成内存泄漏，没办法顾全，
-                                                //个人想法，是不是可以try catch,然后delete掉呢
+                /*
+                假如这里出现异常，也不会影响原先的结构，因为是在新的内存上处理的，但是会造成内存泄漏，没办法顾全，
+                个人想法，是不是可以try catch,然后delete掉呢,但是不同对象的异常不一样，所以没法顾全，除非暴力释放
+                */
+                array[i] = this->m_array[i];
             }
         /*
         感觉可以直接删除 ，不需要这个对象，毕竟已经分配成功，没有其他异常类 ，
-        但是！！ 这是错误的认识，因为对于类而言 delete 触发析构函数，假如析构函数抛出了异常，那么就会导致，原先的数据被破坏了
-
+        但是！！ 这是错误的认识，因为对于类而言 delete 触发析构函数，假如析构函数抛出了异常，那么就会导致，原先的数据被破坏了 数据安全之一会被破坏
         */
             T *tmp = this->m_array;
             this->m_array = array;

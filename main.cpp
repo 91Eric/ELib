@@ -1,9 +1,8 @@
 #include <iostream>
 #include <cstring>
 #include ".//include//Object.h"
-#include ".//include//LinkList.h"
-#include "./include//staticlinklist.h"
-#include ".//include//SmartPointer.h"
+#include "./include//StaticList.h"
+#include ".//include//CricleList.h"
 using namespace std;
 using namespace ELib;
 class Test
@@ -19,14 +18,15 @@ public:
     {
         return (this->a == e.a);
     }
-
 };
-
 
 int main()
 {
 
-
-    StaticLinkList<int,6> a;
+    StaticList<Test,5> t;
+    t.insert(0,Test(3));
+    t = t;
+//    Test a;
+   // t.get(0,a);
     return 0;
 }

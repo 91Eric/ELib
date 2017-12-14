@@ -22,6 +22,6 @@ HEADERS += \
     include/MyLinkList.h \
     include/DynamicArray.h \
     include/StaticLinkList.h \
-    include/CricleLinkList.h \
     include/Pointer.h \
-    include/SharedPointer.h
+    include/SharedPointer.h \
+    include/CricleList.h

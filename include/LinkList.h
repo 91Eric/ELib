@@ -90,6 +90,12 @@ LinkList<T> :: LinkList()
     this->m_current = NULL;
 }
 
+/*
+* @Function Description :
+* @Input parameters :
+* @Return Value :
+* @Other : 这里的插入i是指他想变成第几个位置的节点 ，而不是在第几个节点之前或者之后插入，这样就和删除对应起来了
+*/
 template<typename T>
 bool LinkList<T> :: insert(int i,const T& e)
 {

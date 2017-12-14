@@ -9,7 +9,7 @@ namespace ELib
 
 void Exception::init(const char *message, const char *file, int line)
 {
-//    if(message == NULL)    //如果message为NULL会报错，原因是内部调用了strlen（），后者参数不能为NULL,因此开辟一个空间
+//    if(message == NULL)    //如果message为NULL会报错，原因是strdup内部调用了strlen（），后者参数不能为NULL,因此开辟一个空间
 //    {
 //        m_message = reinterpret_cast<char*>(malloc(1));
 //        *m_message = '\0';
