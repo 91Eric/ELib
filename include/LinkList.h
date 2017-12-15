@@ -65,21 +65,42 @@ public:
 * @Input parameters :
 * @Return Value :
 * @Other : 由于使用了内部类，使用 outer：：inter  的方式在模板外部实现有错误，暂时没找到解决办法，后续进行改进
+*
 */
-    Node* position(int i) const //必须是const因为后续的get()是const函数，const函数不能调用非const！！
-    {
-        Node* ret = reinterpret_cast<Node *>(&m_header);   //强转 ，两个在内存上完全一样
-        for(int j = 0;j<i;j++)
-        {
-            ret = ret->next;
-        }
-        return ret;  //这里由于局部指针指向的是堆上的内存，因此返回这个指针没问题，有问题的是指向栈上的指针
-    }
+    Node* position(int i) const;
+//    Node* position(int i) const //必须是const因为后续的get()是const函数，const函数不能调用非const！！
+//    {
+//        Node* ret = reinterpret_cast<Node *>(&m_header);   //强转 ，两个在内存上完全一样
+//        for(int j = 0;j<i;j++)
+//        {
+//            ret = ret->next;
+//        }
+//        return ret;  //这里由于局部指针指向的是堆上的内存，因此返回这个指针没问题，有问题的是指向栈上的指针
+//    }
 
     void clear();
     ~LinkList();
 };
 
+/*
+* @Function Description : position()函数的模板类外实现方式
+* @Input parameters :
+* @Return Value :
+* @Other : 由于使用了内部类，使用 outer<T>：：inter  的方式在模板外部实现,
+* 由于模板的特殊性，outer<T>::inter编译器无法断定是类型还是变量，因此加上typename 指明这是类型,
+* 否则出现如下错误need ‘typename’ before ‘ELib::LinkList<T>::Node’ because ‘ELib::LinkList<T>’ is a dependent scope
+* 错误原因分析如下：编译器不知道LinkList<T>::Node 代表的是一个类型还是说LinkList<T>内部的一个成员（::作用符可以进行成员访问）
+*/
+template<typename T>
+typename LinkList<T>::Node* LinkList<T> ::position(int i) const //
+{
+    LinkList<T>::Node* ret = reinterpret_cast<LinkList<T>::Node *>(&m_header);   //强转 ，两个在内存上完全一样
+    for(int j = 0;j<i;j++)
+    {
+        ret = ret->next;
+    }
+    return ret;  //这里由于局部指针指向的是堆上的内存，因此返回这个指针没问题，有问题的是指向栈上的指针
+}
 
 template<typename T>
 LinkList<T> :: LinkList()

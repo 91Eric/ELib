@@ -22,11 +22,5 @@ public:
 
 int main()
 {
-
-    StaticList<Test,5> t;
-    t.insert(0,Test(3));
-    t = t;
-//    Test a;
-   // t.get(0,a);
     return 0;
 }
