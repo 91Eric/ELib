@@ -1,2 +1,2 @@
 - The datastruct template library in c++
-- I complete it in QT5.8 in win8 64bit,if you want use it in other platform please delete ELib.pro.user file and rebuild it
+- I complete it in QT5.8 in Ubutun16.04 64bit,if you want use it in other platform please delete ELib.pro.user file and rebuild it
