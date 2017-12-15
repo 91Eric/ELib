@@ -5,7 +5,7 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     src/Object.cpp \
-    src/Exception.cpp
+    src/Exception.cpp \
 
 HEADERS += \
     include/Object.h \

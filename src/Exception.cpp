@@ -1,6 +1,7 @@
 #include "./include/Exception.h"
 #include <cstring>
 #include <cstdlib>
+#include <cstdio>
 #include <cassert>
 using namespace std;
 
@@ -22,7 +23,7 @@ void Exception::init(const char *message, const char *file, int line)
     if(file!=NULL)
     {
         char sl[16]={0};
-        itoa(line,sl,10);
+        sprintf(sl,"%d",line);
         m_location=static_cast<char*>(malloc(strlen(file)+strlen(sl)+2));
         strcpy(m_location,file);
         strcat(m_location,":");
@@ -82,20 +83,3 @@ Exception::~Exception()
 }
 
 }
-
-
-/*
-int main（）
-{
-try
-{
-    throw Exception("test",__FILE__,__LINE__);
-}
-catch(const Exception& e)//此处const可有可无
-{
-}
-}
-
-*/
-
-
