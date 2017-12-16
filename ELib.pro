@@ -12,7 +12,6 @@ HEADERS += \
     include/SmartPointer.h \
     include/Exception.h \
     include/List.h \
-    include/Seqlist.h \
     include/StaticList.h \
     include/Array.h \
     include/StaticArray.h \
@@ -24,4 +23,7 @@ HEADERS += \
     include/StaticLinkList.h \
     include/Pointer.h \
     include/SharedPointer.h \
-    include/CricleList.h
+    include/CricleList.h \
+    include/StaticLinkList.h \
+    include/DynamicList.h \
+    include/SeqList.h
