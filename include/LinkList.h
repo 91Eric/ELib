@@ -34,6 +34,17 @@ protected:
     int m_step;
     int m_length;
 
+protected:
+    virtual Node* create()
+    {
+        return new Node();
+    }
+    virtual void destory(Node *p)
+    {
+        delete p;
+        p = NULL;
+    }
+
 public:
     LinkList();
     bool insert(const T& e); //尾插
@@ -48,42 +59,14 @@ public:
     virtual bool end();
     virtual bool next();
     virtual T current();
-
-    virtual Node* create()
-    {
-        return new Node();
-    }
-    virtual void destory(Node *p)
-    {
-        delete p;
-        p = NULL;
-    }
-
-    //T operator ==(const T& e);
-/*
-* @Function Description : 获取到位置 i 的节点指针
-* @Input parameters :
-* @Return Value :
-* @Other : 由于使用了内部类，使用 outer：：inter  的方式在模板外部实现有错误，暂时没找到解决办法，后续进行改进
-*
-*/
     Node* position(int i) const;
-//    Node* position(int i) const //必须是const因为后续的get()是const函数，const函数不能调用非const！！
-//    {
-//        Node* ret = reinterpret_cast<Node *>(&m_header);   //强转 ，两个在内存上完全一样
-//        for(int j = 0;j<i;j++)
-//        {
-//            ret = ret->next;
-//        }
-//        return ret;  //这里由于局部指针指向的是堆上的内存，因此返回这个指针没问题，有问题的是指向栈上的指针
-//    }
 
     void clear();
     ~LinkList();
 };
 
 /*
-* @Function Description : position()函数的模板类外实现方式
+* @Function Description :获取到位置 i 的节点指针 position()函数的模板类外实现方式
 * @Input parameters :
 * @Return Value :
 * @Other : 由于使用了内部类，使用 outer<T>：：inter  的方式在模板外部实现,
@@ -298,6 +281,7 @@ T LinkList<T> ::  current()
     }
     else
     {
+
         THROW_EXCEPTION(InvalidParameterException,"No  value at current position...");
     }
 }

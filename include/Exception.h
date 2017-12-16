@@ -1,6 +1,8 @@
 #ifndef _EXCEPTION_H
 #define _EXCEPTION_H
 
+#define _linux_
+
 namespace ELib
 {
 

@@ -23,7 +23,11 @@ void Exception::init(const char *message, const char *file, int line)
     if(file!=NULL)
     {
         char sl[16]={0};
-        sprintf(sl,"%d",line);
+        #ifdef _linux_
+            sprintf(sl,"%d",line);
+        #elif
+            itoa(sl,line,10);
+        #endif
         m_location=static_cast<char*>(malloc(strlen(file)+strlen(sl)+2));
         strcpy(m_location,file);
         strcat(m_location,":");
