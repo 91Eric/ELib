@@ -5,6 +5,12 @@
 
 namespace ELib
 {
+
+/*
+*@calss description:
+*@other:这个类仍然使用m_header进行管理，切记！看父类的insert函数，本类只是对内存分配做了改变，其他没变
+* 如果没有析构函数，调用父类的析构函数，有父类析构函数调用了虚函数，而在析构函数里，虚函数无用，导致调用父类的destory函数，错误的释放内存空间
+*/
 template<typename T,int N>
 class StaticLinkList : public LinkList<T>
 {
@@ -76,6 +82,12 @@ public:
     int capacity() const
     {
         return N;
+    }
+
+    ~StaticLinkList()
+    {
+        //这里虽然调用了父类的clear函数，但是析构函数中不会发生多态，因此，destory函数只能是本类的
+        this->clear();
     }
 
 };
