@@ -38,7 +38,7 @@ public:
 };
 
 template<typename T>
-DynamicArray<T> :: DynamicArray(int length)
+DynamicArray<T> :: DynamicArray(int length = 0)
 {
     this->m_array = new T(length);
     if(this->m_array != NULL)
