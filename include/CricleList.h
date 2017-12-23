@@ -41,7 +41,7 @@ public:
     {
           bool ret = true;
           i = i % (this->m_length + 1); //这里必须是length+1 ，如果直接取length就成了在尾部插入，这时候不需要首尾重新相连
-          ret = LinkList<T>::insert(i,e); //这里直接调用父类的，不用自己在写一遍重复的代码了
+          ret = LinkList<T>::insert(i,e); //经过前一步i肯定不会超过m_length,所以ret肯定是true.这里直接调用父类的，完成节点指针重定位
 
           if(ret && (i == 0))  //如果实在0节点插入，则首尾重新链接
           {
