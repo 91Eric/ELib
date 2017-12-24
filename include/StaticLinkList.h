@@ -55,7 +55,7 @@ protected:
         return reinterpret_cast<Node*>(ret);
     }
 
-    void destory(Node *p)
+    void destory(Node*& p)
     {
         SNode* space = reinterpret_cast<SNode*>(&m_space);
         SNode* ps = dynamic_cast<SNode*>(p);

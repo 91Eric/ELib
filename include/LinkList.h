@@ -39,12 +39,13 @@ protected:
     {
         return new Node();
     }
-    virtual void destory(Node *p)
+    virtual void destory(Node*& p)
     {
         delete p;
         p = NULL;
     }
 
+    Node* position(int i) const;
 public:
     LinkList();
     bool insert(const T& e); //尾插
@@ -59,7 +60,7 @@ public:
     virtual bool end();
     virtual bool next();
     virtual T current();
-    Node* position(int i) const;
+
 
     void clear();
     ~LinkList();
