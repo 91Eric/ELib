@@ -26,4 +26,5 @@ HEADERS += \
     include/CricleList.h \
     include/StaticLinkList.h \
     include/DynamicList.h \
-    include/SeqList.h
+    include/SeqList.h \
+    include/DualLinkList.h
