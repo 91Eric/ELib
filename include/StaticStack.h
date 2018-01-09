@@ -1,0 +1,4 @@
+#ifndef STATICSTACK_H
+#define STATICSTACK_H
+
+#endif // STATICSTACK_H
